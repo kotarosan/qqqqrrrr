@@ -19,7 +19,7 @@
                     //withLoginOnExternalBrowser: true
                 })
                 .then(() => {
-                    liff.scanCodeV2().then((result) => {
+                    liff.scanCodeV2().then(result => {
                         const stringifiedResult = result.value;
                         liff.sendMessages({
                             'type': 'text',
