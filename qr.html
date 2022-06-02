@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QRコードリーダー44</title>
+    <title>QRコードリーダー</title>
 </head>
 
 <body>
@@ -17,7 +17,19 @@
                 liff.scanCodeV2()
                     .then((result) => {
                         // result = { value: "" }
-                        liff.closeWindow();
+                        liff
+                            .sendMessages([
+                                {
+                                    type: "text",
+                                    text: "Hello, World!",
+                                },
+                            ])
+                            .then(() => {
+                                console.log("message sent");
+                            })
+                            .catch((err) => {
+                                console.log("error", err);
+                            });
                     })
                     .catch((error) => {
                         console.log("error", error);
