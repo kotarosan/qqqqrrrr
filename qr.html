@@ -1,39 +1,38 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>QRコードリーダー2</title>
-    </head>
-    <body>
-        <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-        <script>
-            window.onload = function() {
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QRコードリーダー</title>
+</head>
+
+<body>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script>
+        window.onload = function () {
             const defaultLiffId = "1657178423-aBRkKEeb";
             initializeLiff(defaultLiffId);
-            };
+        };
 
-            function initializeLiff(defaultLiffId) {
-                liff
+        function initializeLiff(defaultLiffId) {
+            liff
                 .init({
                     liffId: defaultLiffId,
-                    withLoginOnExternalBrowser: true,
+                    withLoginOnExternalBrowser: true
                 })
                 .then(() => {
-                    liff.scanCodeV2().then(result => {
-                        const stringifiedResult = result.value;
-                        liff.sendMessages([{
-                            'type': 'text',
-                            'text': stringifiedResult
-                        }]).then(() => {
-                            liff.closeWindow();
-                        }).catch((error) => {
-                            window.alert('Error sending message: ' + error);
-                        });
+                    liff.scanCodeV2().then(() => {
+                    }).then(() => {
+                        liff.closeWindow();
                     }).catch((error) => {
-                        window.alert('scanCode failed!');
+                        window.alert('Error sending message: ' + error);
                     });
+                }).catch((error) => {
+                    window.alert('scanCode failed!');
                 });
-            }
-        </script>
-    </body>
+        };
+
+    </script>
+</body>
+
 </html>
