@@ -5,7 +5,7 @@
         <title>QRコードリーダー</title>
     </head>
     <body>
-        <script src="https://static.line-scdn.net/liff/edge/versions/2.19.1/sdk.js"></script>
+        <script src="https://static.line-scdn.net/liff/edge/versions/2.20.1/sdk.js"></script>
         <script>
             window.onload = function() {
             const defaultLiffId = "1657178423-aBRkKEeb";
@@ -24,6 +24,9 @@
                             'type': 'text',
                             'text': stringifiedResult
                         }]).then(() => {
+                            liff.init({
+                    liffId: "1657178423-aBRkKEeb"
+                        }).then(() => {
                             liff.closeWindow();
                         }).catch((error) => {
                             window.alert('Error sending message: ' + error);
@@ -31,7 +34,7 @@
                     }).catch((error) => {
                         window.alert('scanCode failed!');
                     });
-                });
+                })});
             }
         </script>
     </body>
