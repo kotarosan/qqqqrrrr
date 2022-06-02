@@ -9,26 +9,20 @@
 <body>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
-        window.onload = function () {
-            const defaultLiffId = "1657178423-aBRkKEeb";
-            initializeLiff(defaultLiffId);
-        };
-
-        function initializeLiff(defaultLiffId) {
-            liff
-                .init({
-                    liffId: defaultLiffId,
-                    withLoginOnExternalBrowser: true
-                })
-                .then((result) => {
-                    // result = { value: "" }
-                    liff.closeWindow();
-                })
-                .catch((error) => {
-                    console.log("error", error);
-                });
-        };
-
+        liff
+            .init({
+                liffId: "1657178423-aBRkKEeb" // Use own liffId
+            })
+            .then(() => {
+                liff.scanCodeV2()
+                    .then((result) => {
+                        // result = { value: "" }
+                        liff.closeWindow();
+                    })
+                    .catch((error) => {
+                        console.log("error", error);
+                    })
+            });
     </script>
 </body>
 
