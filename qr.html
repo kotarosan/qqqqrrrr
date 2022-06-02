@@ -11,7 +11,9 @@
     <script>
         liff
             .init({
-                liffId: "1657178423-aBRkKEeb" // Use own liffId
+                liffId: "1657178423-aBRkKEeb", // Use own liffId,
+                withLoginOnExternalBrowser: true,
+
             })
             .then(() => {
                 liff.scanCodeV2()
@@ -21,7 +23,7 @@
                             .sendMessages([
                                 {
                                     type: "text",
-                                    text: "Hello, World!",
+                                    text: "はあい",
                                 },
                             ])
                             .then(() => {
