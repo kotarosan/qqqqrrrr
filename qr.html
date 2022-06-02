@@ -3,7 +3,8 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QRコードリーダー</title>
+    <title>QRコードリーダー3
+    </title>
 </head>
 
 <body>
@@ -21,12 +22,9 @@
                     withLoginOnExternalBrowser: true
                 })
                 .then(() => {
-                    liff.scanCodeV2().then(result => {
-                        liff.closeWindow();
-                    }).catch((error) => {
-                        window.alert('scanCode failed!');
-                    });
-                })};
+                    liff.closeWindow();
+                });
+        };
 
     </script>
 </body>
