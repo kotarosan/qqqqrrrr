@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QRコードリーダー23</title>
+    <title>QRコードリーダー3</title>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
 
@@ -24,11 +24,11 @@
                                 {
                                     type: "text",
                                     text: "テストテキスト送信"
-                                },
+                                }
                             ])
                             .then(() => {
-                                //liff.closeWindow();
-                                window.alert('Error sending message: ' + error);
+                                liff.closeWindow();
+                                //window.alert('Error sending message: ' + error);
                             })
                             .catch((err) => {
                                 window.alert('Error sending message: ' + error);
