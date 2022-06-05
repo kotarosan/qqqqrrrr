@@ -26,9 +26,10 @@
                                     text: "テストテキスト送信",
                                 },
                             ])
+                            liff.closeWindow();
                             .then(() => {
                                 //liff.closeWindow();
-                                window.alert('Error sending message: ' + error);
+                                //window.alert('Error sending message: ' + error);
                             })
                             .catch((err) => {
                                 window.alert('Error sending message: ' + error);
