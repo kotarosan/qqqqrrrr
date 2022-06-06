@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QRコードリーダー100</title>
+    <title>QRコードリーダー110</title>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
 
@@ -11,16 +11,14 @@
     <script>
         liff
             .init({
-                liffId: "1657178423-aBRkKEeb", // Use own liffId,
-                withLoginOnExternalBrowser: true
+                liffId: "1657178423-aBRkKEeb" // Use own liffId
             })
             .then(() => {
                 liff
-                    .scanCodeV2()
-                    .then((result => {
+                    .scanCodeV2().then(result => {
                         window.alert(resultです);
-                    }))
-                    .catch((error) => {
+                    })
+                    .catch(error => {
                         window.alert(errorです);
                     });
             })
