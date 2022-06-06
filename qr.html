@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QRコードリーダー99</title>
+    <title>QRコードリーダー100</title>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
 
@@ -15,24 +15,13 @@
                 withLoginOnExternalBrowser: true
             })
             .then(() => {
-                liff.scanCodeV2()
+                liff
+                    .scanCodeV2()
                     .then((result) => {
-                        // result = { value: "" }
-                        liff
-                            .sendMessages([{
-                                    type: "text",
-                                    text: "テストテキスト送信"
-                                }])
-                            .then(() => {
-                                window.alert("テスト")
-                                liff.closeWindow();
-                            })
-                            .catch((err) => {
-                                window.alert('Error sending message: ' + error);
-                            });
+                        window.alert(resultです);
                     })
                     .catch((error) => {
-                        window.alert('Error sending message: ' + error);
+                        window.alert(errorです);
                     });
             })
     </script>
