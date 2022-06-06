@@ -17,9 +17,9 @@
             .then(() => {
                 liff
                     .scanCodeV2()
-                    .then((result) => {
+                    .then((result => {
                         window.alert(resultです);
-                    })
+                    }))
                     .catch((error) => {
                         window.alert(errorです);
                     });
