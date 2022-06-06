@@ -1,29 +1,53 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>QRコードリーダー</title>
+    </head>
+    <body>
+        <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+        <script>
+            var message;
+            const defaultLiffId = "1657178423-aBRkKEeb";
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QRコードリーダー100</title>
-    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-</head>
+            window.onload = function() {
+                scanCode();
+            };
 
-<body>
-    <script>
-        liff
-            .init({
-                liffId: "1657178423-aBRkKEeb" // Use own liffId
-            })
-            .then(() => {
+            function scanCode() {
                 liff
-                    .scanCodeV2()
-                    .then(() => {
-                        window.alert(resultです);
-                    })
-                    .catch(error => {
-                        window.alert(errorです);
+                .init({
+                    liffId: defaultLiffId
+                })
+                .then(() => {
+                    liff.scanCodeV2().then(result => {
+                        message = result.value;
+                        document.getElementById('result').innerText = message;
+                    }).catch((error) => {
+                        window.alert('scanCode failed: ' + error);
                     });
-            })
-    </script>
-</body>
+                });
+            }
 
+            function sendMessageAndCloseWindow() {
+                liff
+                .init({
+                    liffId: defaultLiffId
+                })
+                .then(() => {
+                    liff.sendMessages([{
+                        'type': 'text',
+                        'text': message
+                    }]).then(() => {
+                        liff.closeWindow();
+                    }).catch((error) => {
+                        window.alert('Error sending message: ' + error);
+                    });
+                });
+            }
+        </script>
+    <div align="center">スキャンした内容: <div id="result"></div>
+    <button onclick="sendMessageAndCloseWindow()">LINEに送信する</button>
+    </div>
+    </body>
 </html>
