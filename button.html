@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QRコードリーダー2</title>
+    <title>QRコードリーダ32</title>
 </head>
 
 <body>
@@ -48,7 +48,7 @@
                 });
         }
 
-        function sendMessage() {
+        function webhook() {
             var request = new XMLHttpRequest();
             request.open("POST", "https://hook.eu1.make.com/kkm4c6rt7o246txf19tz24ochcm79yb1");
 
@@ -65,7 +65,7 @@
 
     </script>
     <div align="center">スキャンした内容: <div id="result"></div>
-        <button onclick="sendMessageAndCloseWindow();sendMessage()">LINEに送信する</button>
+        <button onclick="sendMessageAndCloseWindow();webhook()">LINEに送信する</button>
     </div>
 </body>
 
