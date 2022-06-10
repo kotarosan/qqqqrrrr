@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QRコードリーダ53</title>
+    <title>QRコードリーダ55</title>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
                         request.setRequestHeader('Content-type', 'application/json');
                         var params = {
                             username: "My Webhook Name",
-                            avatar_url: "result",
+                            avatar_url: result.value,
                             content: "The message to send"
                         }
                         request.send(JSON.stringify(params));
