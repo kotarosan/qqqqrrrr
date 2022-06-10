@@ -23,7 +23,7 @@
                 })
                 .then(() => {
                     liff.scanCodeV2().then(result => {
-                        liff.closeWindow()
+                        liff.closeWindow();
                         //message = result.value;
                         //document.getElementById('result').innerText = message;
                         var request = new XMLHttpRequest();
