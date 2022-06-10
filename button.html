@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QRコードリーダ63</title>
+    <title>QRコードリーダ53</title>
 </head>
 
 <body>
@@ -34,13 +34,14 @@
                             content: "The message to send"
                         }
                         request.send(JSON.stringify(params));
-                        
+
                     }).catch((error) => {
                         window.alert('scanCode failed: ' + error);
                     });
-                    
+                    .then(() => {
+                        liff.closeWindow();
+                    });
                 });
-                liff.closeWindow();
         }
 
         function sendMessageAndCloseWindow() {
