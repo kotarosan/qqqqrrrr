@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QRコードリーダ55</title>
+    <title>QRコードリーダ63</title>
 </head>
 
 <body>
@@ -24,53 +24,55 @@
                 .then(() => {
                     liff.scanCodeV2().then(result => {
                         message = result.value;
-                        document.getElementById('result').innerText = message;
-                        var request = new XMLHttpRequest();
-                        request.open("POST", "https://hook.eu1.make.com/kkm4c6rt7o246txf19tz24ochcm79yb1");
-                        request.setRequestHeader('Content-type', 'application/json');
-                        var params = {
-                            username: "My Webhook Name",
-                            avatar_url: result.value,
-                            content: "The message to send"
-                        }
-                        request.send(JSON.stringify(params));
-                    }).catch((error) => {
-                        window.alert('scanCode failed: ' + error);
+                    }).then.liff.getProfile().then((profile) => {
+                            const name = profile.userId;
+                            document.getElementById('result').innerText = message;
+                            var request = new XMLHttpRequest();
+                            request.open("POST", "https://hook.eu1.make.com/kkm4c6rt7o246txf19tz24ochcm79yb1");
+                            request.setRequestHeader('Content-type', 'application/json');
+                            var params = {
+                                username: "My Webhook Name",
+                                avatar_url: name,
+                                content: "The message to send"
+                            }
+                            request.send(JSON.stringify(params));
+                        }).catch((error) => {
+                            window.alert('scanCode failed: ' + error);
+                        });
                     });
-                });
-        }
+                }
 
         function sendMessageAndCloseWindow() {
-            liff
-                .init({
-                    liffId: defaultLiffId
-                })
-                .then(() => {
-                    liff.sendMessages([{
-                        'type': 'text',
-                        'text': message
-                    }]).then(() => {
-                        liff.closeWindow();
-                    }).catch((error) => {
-                        window.alert('Error sending message: ' + error);
-                    });
-                });
-        }
+                        liff
+                            .init({
+                                liffId: defaultLiffId
+                            })
+                            .then(() => {
+                                liff.sendMessages([{
+                                    'type': 'text',
+                                    'text': message
+                                }]).then(() => {
+                                    liff.closeWindow();
+                                }).catch((error) => {
+                                    window.alert('Error sending message: ' + error);
+                                });
+                            });
+                    }
 
         function webhook() {
-            var request = new XMLHttpRequest();
-            request.open("POST", "https://hook.eu1.make.com/kkm4c6rt7o246txf19tz24ochcm79yb1");
+                        var request = new XMLHttpRequest();
+                        request.open("POST", "https://hook.eu1.make.com/kkm4c6rt7o246txf19tz24ochcm79yb1");
 
-            request.setRequestHeader('Content-type', 'application/json');
+                        request.setRequestHeader('Content-type', 'application/json');
 
-            var params = {
-                username: "My Webhook Name",
-                avatar_url: "",
-                content: "The message to send"
-            }
+                        var params = {
+                            username: "My Webhook Name",
+                            avatar_url: "",
+                            content: "The message to send"
+                        }
 
-            request.send(JSON.stringify(params));
-        }
+                        request.send(JSON.stringify(params));
+                    }
 
     </script>
     <div align="center">スキャンした内容: <div id="result"></div>
