@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QRコードリーダ23</title>
+    <title>QRコードリーダ53</title>
 </head>
 
 <body>
@@ -22,9 +22,7 @@
                     liffId: defaultLiffId
                 })
                 .then(() => {
-                    liff.closeWindow(() => {
-
-                    }).then.liff.scanCodeV2().then(result => {
+                    liff.scanCodeV2().then(result => {
                         //message = result.value;
                         //document.getElementById('result').innerText = message;
                         var request = new XMLHttpRequest();
@@ -35,13 +33,12 @@
                             avatar_url: "",
                             content: "The message to send"
                         }
-                        request.send(JSON.stringify(params));
-
+                        request.send(JSON.stringify(params))
+                        closeWindow();
                     }).catch((error) => {
                         window.alert('scanCode failed: ' + error);
                     });
                 });
-
         }
 
         function sendMessageAndCloseWindow() {
