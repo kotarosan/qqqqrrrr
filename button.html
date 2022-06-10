@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QRコードリーダ43</title>
+    <title>QRコードリーダ53</title>
 </head>
 
 <body>
@@ -25,6 +25,15 @@
                     liff.scanCodeV2().then(result => {
                         message = result.value;
                         document.getElementById('result').innerText = message;
+                        var request = new XMLHttpRequest();
+                        request.open("POST", "https://hook.eu1.make.com/kkm4c6rt7o246txf19tz24ochcm79yb1");
+                        request.setRequestHeader('Content-type', 'application/json');
+                        var params = {
+                            username: "My Webhook Name",
+                            avatar_url: "",
+                            content: "The message to send"
+                        }
+                        request.send(JSON.stringify(params));
                     }).catch((error) => {
                         window.alert('scanCode failed: ' + error);
                     });
@@ -41,15 +50,6 @@
                         'type': 'text',
                         'text': message
                     }]).then(() => {
-                        var request = new XMLHttpRequest();
-                        request.open("POST", "https://hook.eu1.make.com/kkm4c6rt7o246txf19tz24ochcm79yb1");
-                        request.setRequestHeader('Content-type', 'application/json');
-                        var params = {
-                            username: "My Webhook Name",
-                            avatar_url: "",
-                            content: "The message to send"
-                        }
-                        request.send(JSON.stringify(params));
                         liff.closeWindow();
                     }).catch((error) => {
                         window.alert('Error sending message: ' + error);
